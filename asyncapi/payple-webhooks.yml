@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr
+type: Webhooks
+notes: >-
+  Payple does not publish an AsyncAPI document or an event-streaming surface.
+  Its asynchronous notification mechanism is a merchant-supplied result callback
+  URL: after a payment is authorized/processed, Payple POSTs the result payload
+  to the URL the merchant provides (PCD_RST_URL). This is a webhook-style server
+  callback, captured here as a webhook catalog. No AsyncAPI spec is fabricated.
+delivery:
+  mechanism: HTTP POST to merchant-supplied result URL
+  callback_field: PCD_RST_URL
+  auth: >-
+    Merchants verify the result server-side by re-confirming the payment via the
+    approval/confirm API using the returned PCD_AUTH_KEY / PCD_PAY_REQKEY.
+webhooks:
+  - name: payment-result-callback
+    trigger: Payment authorization / approval completes (card or bank).
+    method: POST
+    target: merchant PCD_RST_URL
+    payload_fields:
+      - PCD_PAY_RST  # result (success/failure)
+      - PCD_PAY_CODE # result code
+      - PCD_PAY_MSG  # result message (Korean)
+      - PCD_PAY_OID  # merchant order id
+      - PCD_AUTH_KEY # auth key for server-side re-confirmation
+      - PCD_PAY_REQKEY # payment request key
+    verification: Re-confirm via approval/confirm endpoint before fulfilling the order.

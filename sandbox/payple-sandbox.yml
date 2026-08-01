@@ -1,0 +1,34 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr/parameters/domestic-card/app
+notes: >-
+  Payple publishes a dedicated demo/test environment with fixed test
+  credentials documented in the developer center. Production credentials and
+  hosts are issued upon contract completion. Values below are published test
+  values captured verbatim - never use in production.
+environments:
+  - name: demo
+    access_host: https://democpay.payple.kr
+    api_host: https://demo-api-v2.payple.kr
+    description: Demo payment window + demo REST API v2 host.
+  - name: production
+    access_host: https://cpay.payple.kr
+    api_host: https://api-v2.payple.kr
+    description: Production hosts; credentials issued on contract completion.
+test_credentials:
+  - name: PCD_CST_ID
+    value: test
+    description: Published demo partner ID.
+  - name: PCD_CUST_KEY
+    value: abcd1234567890
+    description: Published demo partner authentication key.
+  - name: clientKey
+    value: test_DF55F29DA654A8CBC0F0A9DD4B556486
+    description: Published demo client key for the payment window.
+sample_source:
+  - https://github.com/PAYPLECORP/sample_nodejs
+  - https://github.com/PAYPLECORP/sample_python
+  - https://github.com/PAYPLECORP/sample_php
+  - https://github.com/PAYPLECORP/sample_java
+  - https://github.com/PAYPLECORP/sample_react
+  - https://github.com/PAYPLECORP/global_sample_node

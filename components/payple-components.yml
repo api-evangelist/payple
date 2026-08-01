@@ -1,0 +1,31 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr
+notes: >-
+  Payple's primary embeddable, client-side surface is the hosted Payment Window
+  (결제창) - a prebuilt payment UI initialized in the browser via a JavaScript
+  loader and the public clientKey. Distinct from the language sample source in
+  packages/. Exact loader script path is issued in the developer center per
+  integration; not reproduced here to avoid guessing a URL.
+components:
+  - family: payment-window
+    name: Payple Payment Window (결제창)
+    kind: hosted-prebuilt-ui
+    description: >-
+      Hosted, prebuilt payment UI for domestic/international card, bank account,
+      and link payments. Opened from the merchant page via a JS call using the
+      public clientKey; enforces domain/Referer verification and HTTPS.
+    init_credential: clientKey
+    payment_methods:
+      - domestic card (app / billing / password)
+      - domestic bank account (billing / password)
+      - international card (key-in / recurring)
+      - link payment
+    docs: https://developer.payple.kr/parameters/domestic-card/app
+  - family: link-payment
+    name: Payple Link Payment
+    kind: hosted-checkout-link
+    description: >-
+      Hosted payment link surface for collecting payment without a full
+      integration; product/amount/expiry configured, buyer pays via a shared URL.
+    docs: https://developer.payple.kr/parameters/domestic-card/link

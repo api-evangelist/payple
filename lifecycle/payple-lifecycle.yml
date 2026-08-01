@@ -1,0 +1,29 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr
+notes: >-
+  Versioning and lifecycle signals captured from the Payple developer center.
+  No public status page (status.payple.kr) and no formal published deprecation
+  policy (RFC 8594 Sunset/Deprecation headers) were found, so neither a
+  StatusPage nor a Deprecation canonical pointer is emitted.
+versioning:
+  scheme: host + path version
+  current_major: v2
+  hosts:
+    production: https://api-v2.payple.kr
+    demo: https://demo-api-v2.payple.kr
+  path_prefix: /api/v1
+  legacy_surface: >-
+    PCD_-prefixed form/JSON endpoints on cpay.payple.kr / democpay.payple.kr
+    remain documented alongside REST API v2.
+deprecation_policy:
+  published: false
+  evidence: none found in developer center
+status_page:
+  present: false
+  evidence: no status.payple.kr or public uptime page found
+sla:
+  published: false
+  operating_windows: >-
+    Certain Hub (payout/settlement) operations are restricted to operating
+    hours; outside-hours requests return T0997.

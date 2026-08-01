@@ -1,0 +1,81 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/PAYPLECORP
+notes: >-
+  Payple does not publish client libraries to language package registries
+  (npm/PyPI/Maven/NuGet/RubyGems/Packagist/crates.io return no first-party
+  Payple packages). Instead it ships official first-party integration sample
+  source (샘플소스) per language from the PAYPLECORP GitHub organization, covering
+  both domestic (국내결제) and global (해외결제) payment flows. These are the
+  canonical, provider-maintained client integration references.
+packages:
+  - language: javascript
+    registry: github
+    kind: sample-source
+    name: sample_nodejs
+    description: Payple domestic payment Node.js integration sample source.
+    url: https://github.com/PAYPLECORP/sample_nodejs
+    official: true
+  - language: javascript
+    registry: github
+    kind: sample-source
+    name: sample_react
+    description: Payple domestic payment React integration sample source.
+    url: https://github.com/PAYPLECORP/sample_react
+    official: true
+  - language: python
+    registry: github
+    kind: sample-source
+    name: sample_python
+    description: Payple domestic payment Python integration sample source.
+    url: https://github.com/PAYPLECORP/sample_python
+    official: true
+  - language: php
+    registry: github
+    kind: sample-source
+    name: sample_php
+    description: Payple domestic payment PHP integration sample source.
+    url: https://github.com/PAYPLECORP/sample_php
+    official: true
+  - language: java
+    registry: github
+    kind: sample-source
+    name: sample_java
+    description: Payple domestic payment Java integration sample source.
+    url: https://github.com/PAYPLECORP/sample_java
+    official: true
+  - language: javascript
+    registry: github
+    kind: sample-source
+    name: global_sample_node
+    description: Payple global (overseas card) payment Node.js sample source.
+    url: https://github.com/PAYPLECORP/global_sample_node
+    official: true
+  - language: javascript
+    registry: github
+    kind: sample-source
+    name: global_sample_react
+    description: Payple global (overseas card) payment React sample source.
+    url: https://github.com/PAYPLECORP/global_sample_react
+    official: true
+  - language: python
+    registry: github
+    kind: sample-source
+    name: global_sample_python
+    description: Payple global (overseas card) payment Python sample source.
+    url: https://github.com/PAYPLECORP/global_sample_python
+    official: true
+  - language: php
+    registry: github
+    kind: sample-source
+    name: global_sample_php
+    description: Payple global (overseas card) payment PHP sample source.
+    url: https://github.com/PAYPLECORP/global_sample_php
+    official: true
+  - language: java
+    registry: github
+    kind: sample-source
+    name: global_sample_java
+    description: Payple global (overseas card) payment Java sample source.
+    url: https://github.com/PAYPLECORP/global_sample_java
+    official: true

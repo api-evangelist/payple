@@ -1,0 +1,51 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr/response-code
+notes: >-
+  Payment approval failures for Payple card and bank transactions surface
+  through the approval (A-prefix) and screen-specific result codes rather than a
+  single normalized decline-code registry. Buyers see the Korean result message
+  (PCD_PAY_MSG); merchants receive the code. Captured verbatim below are the
+  documented approval-failure / decline-relevant codes. Complements
+  errors/payple-response-codes.yml (does not replace it).
+envelope:
+  code_field: "PCD_PAY_CODE / result code"
+  message_field: "PCD_PAY_MSG (Korean, shown to buyer)"
+masked_to_buyer: true
+decline_codes:
+  - code: A0999
+    domain: card/bank approval
+    meaning: Approval failure - general decline or issuer/network specific failure.
+    action: Advise buyer to retry or use another payment method; inspect message for issuer detail.
+  - code: A0996
+    domain: refund
+    meaning: Refund amount error (exceeds refundable amount).
+    action: Reduce refund amount to within the refundable balance.
+  - code: A0003
+    domain: billing key
+    meaning: Billing key missing for recurring/billing-key payment.
+    action: Re-register the card / re-issue the billing key before charging.
+  - code: A0004
+    domain: billing key
+    meaning: Billing key blocked.
+    action: Unblock or re-register the billing key.
+  - code: PCCF0012
+    domain: domestic card approval
+    meaning: Per-transaction limit exceeded.
+    action: Lower the amount or raise the merchant/card limit.
+  - code: PCCF0013
+    domain: domestic card approval
+    meaning: Monthly limit exceeded.
+    action: Wait for limit reset or raise the monthly limit.
+  - code: PCCF0018
+    domain: domestic card approval
+    meaning: Card payment (issuer approval) failed.
+    action: Retry or use a different card; check issuer status.
+  - code: CDAU9000
+    domain: card registration
+    meaning: Card information mismatch during registration.
+    action: Re-enter correct card details.
+  - code: SPCD1000
+    domain: billing-key payment
+    meaning: Duplicate payment detected.
+    action: Do not retry; the original payment already succeeded (idempotent guard).

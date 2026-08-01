@@ -1,0 +1,95 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr/response-code
+format: proprietary
+notes: >-
+  Payple returns proprietary alphanumeric result codes (not RFC 9457
+  problem+json). Codes are namespaced by prefix indicating the transaction
+  stage: T=token/partner-auth, R=request validation, A=approval, C=client/
+  payment-window, N=account verification, D=transfer result, plus
+  screen/process specific families (AUTH, CPCA, PCCF, CDAU, SPCD, PAYM, PAYC,
+  PCHK, PUER for domestic card; PCOF, ARSA, CPAY, SPAY, BILL for domestic bank;
+  LINK for link payments; PSTL for reconciliation). The code is paired with a
+  Korean result message field. Only codes explicitly published on the response
+  reference are captured verbatim below; families list their documented range.
+envelope:
+  code_field: "result code (varies by API: e.g. PCD_PAY_RST / PCD_PAY_CODE)"
+  message_field: "result message (Korean), e.g. PCD_PAY_MSG"
+families:
+  - prefix: T
+    domain: partner-authentication / token
+    range: T0000-T0999
+    example_codes:
+      - code: T0000
+        meaning: Process success.
+      - code: T0100
+        meaning: Request format error (method/JSON/BODY data).
+      - code: T0200
+        meaning: Missing or invalid authentication parameter.
+      - code: T0300
+        meaning: Authentication failure or missing service setting.
+      - code: T0400
+        meaning: Auth token invalid or expired.
+      - code: T0997
+        meaning: Outside Hub operating hours (Hub 가능시간이 아닙니다).
+  - prefix: R
+    domain: request / parameter validation
+    range: R0100-R0160
+    example_codes:
+      - code: R0100
+        meaning: Payment parameter validation failure (start of range).
+      - code: R0499
+        meaning: Processing error (Hub transfer).
+  - prefix: A
+    domain: approval / processing
+    range: A0000-A0999
+    example_codes:
+      - code: A0000
+        meaning: Processing success.
+      - code: A0001
+        meaning: Processing (처리 중) - Hub transfer pending.
+      - code: A0003
+        meaning: Billing key missing.
+      - code: A0004
+        meaning: Billing key blocked.
+      - code: A0996
+        meaning: Refund amount error.
+      - code: A0999
+        meaning: Processing failure (general decline or specific failure).
+  - prefix: C
+    domain: client / payment window
+    range: C0998-C0999
+    example_codes:
+      - code: C0998
+        meaning: Payment window closed by user.
+      - code: C0999
+        meaning: Payment window internal error.
+  - prefix: N
+    domain: account verification (Hub)
+    range: N0101-N0199
+    example_codes:
+      - code: N0101
+        meaning: Account / account-holder / bank verification failure (start of range).
+  - prefix: D
+    domain: transfer result inquiry (Hub)
+    range: D0101-D0132
+    example_codes:
+      - code: D0101
+        meaning: Query parameter error or result data not found (start of range).
+  - prefix: PSTL
+    domain: reconciliation / settlement inquiry
+    range: PSTL 0000-0021
+    example_codes:
+      - code: '0000'
+        meaning: Normal processing (정상 처리).
+      - code: '0001'
+        meaning: Settlement data not yet ready (정산 데이터가 아직 준비 안 됨).
+  - prefix: LINK
+    domain: link payments
+    range: LINK 0001-1006
+    example_codes:
+      - code: '0001'
+        meaning: Authentication error / missing product or amount / amount outside limits (start of range).
+rate_limit_codes:
+  - codes: '9991-9997'
+    meaning: Authentication mismatch or per-second / per-minute request-rate limiting.

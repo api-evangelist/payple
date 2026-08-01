@@ -1,0 +1,49 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr/parameters/domestic-card/app
+notes: >-
+  Payple uses a two-stage credential model rather than OAuth2. There is no
+  OpenAPI-declared securityScheme; this profile is captured from the developer
+  documentation. No OAuth scopes exist, so scopes/ is intentionally omitted.
+model: partner-key + client-key
+stages:
+  - stage: client-side
+    name: Client authentication (payment window)
+    mechanism: clientKey
+    where: JavaScript payment-window initialization in the browser
+    parameters:
+      - name: clientKey
+        description: Public client key used to initialize the Payple payment window.
+    restrictions:
+      - Domain / Referer verification (payment window will not open on unregistered domains).
+      - HTTPS required.
+  - stage: server-side
+    name: Partner authentication (approval)
+    mechanism: partner-key -> auth token
+    where: Server-to-server auth request; returns a short-lived auth token used for approval.
+    parameters:
+      - name: PCD_CST_ID
+        description: Partner (merchant) identifier issued by Payple.
+      - name: PCD_CUST_KEY
+        description: Partner authentication key issued by Payple.
+    returns:
+      - name: PCD_AUTH_KEY
+        description: Auth key returned from partner authentication, used for the subsequent approval request.
+      - name: PCD_PAY_REQKEY
+        description: Payment request key returned in the result, used for the subsequent approval request.
+    restrictions:
+      - IP allowlist enforced on server-side requests.
+      - Auth token / auth key is short-lived and single-use per approval.
+schemes:
+  - type: apiKey
+    name: PCD_CST_ID
+    in: body
+    description: Partner ID (server-side).
+  - type: apiKey
+    name: PCD_CUST_KEY
+    in: body
+    description: Partner auth key (server-side).
+  - type: apiKey
+    name: clientKey
+    in: body
+    description: Client key (browser payment window).

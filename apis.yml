@@ -1,7 +1,31 @@
 aid: payple
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/payple.png
 name: Payple
-description: Payple is a company surfaced as a portfolio company of 500-global and added to the API Evangelist
-  network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+description: >-
+  Payple (페이플) is a South Korean payment gateway (PG) and fintech provider that
+  lets merchants accept online payments across domestic and international cards,
+  real-time bank-account payments, recurring / billing-key charges, link
+  payments, identity verification, and settlement / payout (Hub) services.
+  Integration is offered through a hosted payment window initialized in the
+  browser with a public client key, plus a server-side REST API (v2) authorized
+  with partner credentials (PCD_CST_ID / PCD_CUST_KEY). Payple is a registered
+  Korean electronic financial business with an Innovative Financial Service
+  (혁신금융서비스) designation, and it publishes official language sample source,
+  policy documents, and a developer center. This profile was enriched by the API
+  Evangelist pipeline from the Payple developer center and the PAYPLECORP GitHub
+  organization.
 url: https://raw.githubusercontent.com/api-evangelist/payple/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,10 +35,53 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
-apis: []
+- Payments
+- Payment Gateway
+- Fintech
+- Korea
+- Recurring Payments
+- Billing
+- Cards
+- Bank Transfer
+apis:
+- name: Payple Payment API
+  description: >-
+    Payple REST payment API (v2) for card, bank-account, recurring/billing-key,
+    link, verification, and payout (Hub) operations, plus the hosted payment
+    window.
+  humanURL: https://developer.payple.kr
+  baseURL: https://api-v2.payple.kr
+  tags:
+  - Payments
+  - Cards
+  - Bank Transfer
+  - Recurring Payments
+  properties:
+  - type: Documentation
+    url: https://developer.payple.kr
+  - type: APIReference
+    url: https://developer.payple.kr/parameters/domestic-card/app
+  - type: Authentication
+    url: authentication/payple-authentication.yml
+  - type: ErrorCatalog
+    url: errors/payple-response-codes.yml
+  - type: DeclineCodes
+    url: errors/payple-decline-codes.yml
+  - type: Sandbox
+    url: sandbox/payple-sandbox.yml
+  - type: Conventions
+    url: conventions/payple-conventions.yml
+  - type: Idempotency
+    url: conventions/payple-conventions.yml
+  - type: Lifecycle
+    url: lifecycle/payple-lifecycle.yml
+  - type: Webhooks
+    url: asyncapi/payple-webhooks.yml
+  - type: Components
+    url: components/payple-components.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -23,3 +90,56 @@ maintainers:
 common:
 - type: Website
   url: https://payple.kr
+- type: DeveloperPortal
+  url: https://developer.payple.kr
+- type: Documentation
+  url: https://developer.payple.kr
+- type: APIReference
+  url: https://developer.payple.kr/parameters/domestic-card/app
+- type: Support
+  url: https://developer.payple.kr/faq
+- type: GitHubOrganization
+  url: https://github.com/PAYPLECORP
+- type: Blog
+  url: https://github.com/PAYPLECORP/Blog
+- type: TermsOfService
+  url: https://github.com/PAYPLECORP/policies
+- type: PrivacyPolicy
+  url: https://github.com/PAYPLECORP/policies
+- type: Login
+  url: https://accounts.payple.kr
+- type: Packages
+  url: packages/payple-packages.yml
+- type: SDKs
+  url: packages/payple-packages.yml
+- type: Authentication
+  url: authentication/payple-authentication.yml
+- type: ErrorCatalog
+  url: errors/payple-response-codes.yml
+- type: DeclineCodes
+  url: errors/payple-decline-codes.yml
+- type: Sandbox
+  url: sandbox/payple-sandbox.yml
+- type: Conventions
+  url: conventions/payple-conventions.yml
+- type: Idempotency
+  url: conventions/payple-conventions.yml
+- type: Lifecycle
+  url: lifecycle/payple-lifecycle.yml
+- type: Conformance
+  url: conformance/payple-conformance.yml
+- type: Compliance
+  url: conformance/payple-conformance.yml
+- type: Webhooks
+  url: asyncapi/payple-webhooks.yml
+- type: Components
+  url: components/payple-components.yml
+- type: DomainSecurity
+  url: security/payple-domain-security.yml
+- type: LLMsTxt
+  url: llms/payple-llms.txt
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 12
+  pass: local-v1

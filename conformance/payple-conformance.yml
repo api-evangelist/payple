@@ -1,0 +1,46 @@
+generated: '2026-07-20'
+method: searched
+source: https://github.com/PAYPLECORP/policies
+notes: >-
+  Standards / regulatory conformance for Payple. Payple is a Korean payment
+  gateway; its compliance surface is dominated by Korean financial regulation
+  rather than cross-cutting API standards. Assertions below are evidenced from
+  the published policy documents and developer center; absence of evidence is
+  recorded as conforms:false, not fabricated.
+conformance:
+  - id: kr-electronic-financial-transaction-act
+    name: Electronic Financial Transaction Act (전자금융거래법) compliance
+    conforms: true
+    evidence: >-
+      Published fintech-terms / common-fintech-terms (전자금융거래 이용약관) in the
+      PAYPLECORP/policies repository; Payple operates as a registered electronic
+      financial business (PG).
+  - id: kr-innovative-financial-service
+    name: Innovative Financial Service (혁신금융서비스, financial regulatory sandbox) designation
+    conforms: true
+    evidence: >-
+      Published finsandbox-terms / bank-finsandbox-terms (혁신금융서비스 이용약관) in the
+      PAYPLECORP/policies repository, indicating FSC innovative-financial-service
+      designation.
+  - id: kr-identity-verification
+    name: Real-name / identity verification (본인확인) service terms
+    conforms: true
+    evidence: bank-identify-terms / bank-identify-consignment-terms in policies repo.
+  - id: pci-dss
+    name: PCI-DSS card data security
+    conforms: unknown
+    evidence: >-
+      No explicit PCI-DSS certification claim found. International card
+      processing is handled via Cybersource; domestic card via Korean networks.
+  - id: oauth2
+    name: OAuth 2.0
+    conforms: false
+    evidence: Payple uses partner-key + client-key auth, not OAuth2.
+  - id: rfc9457
+    name: RFC 9457 Problem Details
+    conforms: false
+    evidence: Errors use proprietary result codes + Korean messages, not problem+json.
+  - id: idempotency
+    name: Idempotent create semantics
+    conforms: true
+    evidence: Duplicate-payment prevention keyed on merchant order id (PCD_PAY_OID); see conventions.

@@ -1,0 +1,52 @@
+generated: '2026-07-20'
+method: searched
+source: https://developer.payple.kr
+notes: >-
+  Cross-cutting runtime semantics for the Payple payment API, captured from the
+  developer center. Payple runs a legacy PCD_-prefixed form/JSON surface plus a
+  newer REST API v2 (api-v2.payple.kr, path /api/v1/...).
+authentication:
+  style: partner-key + client-key (see authentication/payple-authentication.yml)
+  server_credentials: [PCD_CST_ID, PCD_CUST_KEY]
+  client_credential: clientKey
+  token: short-lived auth key (PCD_AUTH_KEY) per approval
+idempotency:
+  supported: true
+  mechanism: order-id de-duplication
+  key_field: PCD_PAY_OID (merchant order number)
+  behavior: >-
+    Payple detects and rejects duplicate payments for the same merchant order
+    number, returning a duplicate-payment result code (e.g. SPCD1000) rather
+    than charging twice. This provides idempotent create semantics keyed on the
+    merchant-supplied order id rather than an Idempotency-Key header.
+pagination:
+  style: cursor / date-window (settlement + reconciliation inquiries)
+  notes: >-
+    Settlement/reconciliation inquiries (PSTL) use date ranges and cursor-style
+    paging; query-limit and cursor error codes are documented. General payment
+    endpoints are single-resource, not paginated.
+versioning:
+  scheme: host + path version
+  current: v2
+  hosts:
+    production: https://api-v2.payple.kr
+    demo: https://demo-api-v2.payple.kr
+  path_prefix: /api/v1
+error_envelope:
+  format: proprietary result code + Korean message
+  code_field: PCD_PAY_CODE / result code
+  message_field: PCD_PAY_MSG
+  reference: errors/payple-response-codes.yml
+result_callback:
+  field: PCD_RST_URL
+  description: >-
+    Merchant-supplied URL that Payple posts the payment result to after
+    approval (server callback). See asyncapi/payple-webhooks.yml.
+rate_limiting:
+  signaled_via: result codes (9991-9997 family) for per-second / per-minute limits
+  notes: No standard rate-limit response headers documented.
+cross_links:
+  authentication: authentication/payple-authentication.yml
+  errors: errors/payple-response-codes.yml
+  decline_codes: errors/payple-decline-codes.yml
+  lifecycle: lifecycle/payple-lifecycle.yml
