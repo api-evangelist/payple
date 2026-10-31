@@ -64,6 +64,99 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Payple is a company surfaced as a portfolio company of 500-global and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the enrichment pipeline.
+Payple (페이플) is a South Korean payment gateway (PG) and fintech provider that lets merchants accept online payments across domestic and international cards, real-time bank-account payments, recurring / billing-key charges, link payments, identity verification, and settlement / payout (Hub) services. Integration is offered through a hosted payment window initialized in the browser with a public client key, plus a server-side REST API (v2) authorized with partner credentials (PCD_CST_ID / PCD_CUST_KEY). Payple is a registered Korean electronic financial business with an Innovative Financial Service (혁신금융서비스) designation, and it publishes official language sample source, policy documents, and a developer center. This profile was enriched by the API Evangelist pipeline from the Payple developer center and the PAYPLECORP GitHub organization.
 
-Backed by: 500-global — https://payple.kr
+**Areas:** Company · Payments · Payment Gateway · Fintech · South Korea · Recurring Payments · Billing · Cards · Bank Transfers
+
+## Payple on APIs.io
+
+Everything profiled for Payple is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/payple/](https://apis.io/providers/payple/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Payple Payment API](https://apis.io/apis/payple/payple-payment-api/) — Payple REST payment API (v2) for card, bank-account, recurring/billing-key, link, verification, and payout (Hub) operations, plus the hosted payment window.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Payple Webhooks](https://apis.io/asyncapis/payple/payple-webhooks/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Payple Authentication](https://apis.io/security/payple/payple-authentication/)
+- [Payple Domain Security](https://apis.io/security/payple/payple-domain-security/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://payple.kr)
+- [Documentation](https://developer.payple.kr)
+- [API reference](https://developer.payple.kr/parameters/domestic-card/app)
+- [Support](https://developer.payple.kr/faq)
+- [Blog](https://github.com/PAYPLECORP/Blog)
+- [Terms of service](https://github.com/PAYPLECORP/policies)
+- [Privacy policy](https://github.com/PAYPLECORP/policies)
+- [GitHub](https://github.com/PAYPLECORP)
+
+## API Evangelist rating
+
+**Kin Score 40.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 59.5 |
+| Access clarity | 35.5 |
+
+**Agent readiness 25.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | documented (partial credit) |
+| Error Semantics | documented (partial credit) |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 26.8** — Payments
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/payple/](https://apis.io/providers/payple/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Payple: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/payple/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
